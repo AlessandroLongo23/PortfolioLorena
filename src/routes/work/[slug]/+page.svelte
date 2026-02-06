@@ -12,7 +12,7 @@
 
 <svelte:head>
 	<title>{project.title} | Lorena Trapanese</title>
-	<meta name="description" content="{project.focus}. {project.impactStatement}" />
+	<meta name="description" content="{project.focus}." />
 </svelte:head>
 
 <!-- Back Navigation -->

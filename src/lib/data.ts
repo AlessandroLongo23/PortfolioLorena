@@ -13,7 +13,6 @@ export interface Project {
 	role: string;
 	duration: string;
 	focus: string;
-	impactStatement: string;
 	tags: string[];
 	visualStyle: 'tech-gradient' | 'minimalist' | 'playful' | 'elegant' | 'field';
 	star?: StarMethod;
@@ -42,9 +41,8 @@ export const projects: Project[] = [
 		slug: 'sapiens',
 		title: 'Sapiens',
 		role: 'Co-founder & Product Marketing',
-		duration: '2023 - Present',
+		duration: '2025 - Present',
 		focus: 'STEM education for Italian students',
-		impactStatement: '+150% User Growth in 6 Months',
 		tags: ['EdTech', 'Product Marketing', 'Growth Strategy', 'B2C'],
 		visualStyle: 'tech-gradient',
 		brandColor: '#e94a69',
@@ -64,12 +62,11 @@ export const projects: Project[] = [
 		slug: 'tedx-cortina',
 		title: 'TEDx Cortina',
 		role: 'Events & Communication Team',
-		duration: '2022 - 2023',
+		duration: '2025 - Present',
 		focus: 'PR, Event management, Community building',
-		impactStatement: '1,200+ Attendees | 98% Satisfaction',
 		tags: ['Event Management', 'PR', 'Community Building', 'Public Speaking'],
 		visualStyle: 'minimalist',
-		brandColor: '#eb0028', // TED Red
+		brandColor: '#eb0028',
 		logo: '/images/logos/ted.png',
 		coverImage: '/images/projects/tedx-cortina-cover.png',
 		star: {
@@ -86,12 +83,11 @@ export const projects: Project[] = [
 		slug: 'unipiazza',
 		title: 'Unipiazza',
 		role: 'Digital Marketing Intern',
-		duration: '2021 - 2022',
+		duration: '2025 - 2026',
 		focus: 'Loyalty programs, Gamification, Customer retention',
-		impactStatement: '+35% Customer Retention Rate',
 		tags: ['Digital Marketing', 'Gamification', 'CRM', 'Data Analysis'],
 		visualStyle: 'playful',
-		brandColor: '#f97316', // Orange - startup/gamification feel
+		brandColor: '#f97316',
 		logo: '/images/logos/unipiazza.png',
 		coverImage: '/images/projects/unipiazza-cover.png',
 		star: {
@@ -108,9 +104,8 @@ export const projects: Project[] = [
 		slug: 'il-bronzetto',
 		title: 'Il Bronzetto',
 		role: 'Heritage & Craftsmanship Marketing',
-		duration: '2020 - 2021',
+		duration: '2023 - 2024',
 		focus: 'Made in Italy, Luxury market, Traditional marketing',
-		impactStatement: 'International Market Expansion',
 		tags: ['Luxury Marketing', 'Brand Heritage', 'Made in Italy', 'B2B'],
 		visualStyle: 'elegant',
 		brandColor: '#a16207',
@@ -130,12 +125,11 @@ export const projects: Project[] = [
 		slug: 'field-experience',
 		title: 'Field Experience',
 		role: 'Hostess, Promoter & Sales',
-		duration: '2018 - 2021',
+		duration: '2021 - Present',
 		focus: 'Direct sales psychology, Customer relations, Problem-solving',
-		impactStatement: '3+ Years of Customer-Facing Excellence',
 		tags: ['Direct Sales', 'Customer Service', 'Event Staffing', 'Negotiation'],
 		visualStyle: 'field',
-		brandColor: '#71717a', // Neutral zinc
+		brandColor: '#71717a',
 		isSummaryCard: true
 	}
 ];
