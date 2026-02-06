@@ -155,7 +155,7 @@
 {/if}
 
 <!-- Visual Placeholders Section -->
-<section class="border-t border-border bg-highlight px-6 py-20 md:py-28">
+<!-- <section class="border-t border-border bg-highlight px-6 py-20 md:py-28">
 	<div class="mx-auto max-w-4xl">
 		<p class="mb-3 text-center text-xs font-medium uppercase tracking-widest text-ink-subtle">Coming Soon</p>
 		<h2 class="mb-12 text-center text-xl font-semibold tracking-tight text-ink">
@@ -163,7 +163,6 @@
 		</h2>
 
 		<div class="grid gap-6 md:grid-cols-2">
-			<!-- Desktop Mockup Placeholder -->
 			<div
 				class="flex flex-col items-center rounded-lg border border-border bg-white p-8"
 			>
@@ -175,7 +174,6 @@
 				<p class="text-sm text-ink-subtle">Desktop view</p>
 			</div>
 
-			<!-- Mobile Mockup Placeholder -->
 			<div
 				class="flex flex-col items-center rounded-lg border border-border bg-white p-8"
 			>
@@ -192,7 +190,7 @@
 			Contact me for detailed case study materials and project documentation.
 		</p>
 	</div>
-</section>
+</section> -->
 
 <!-- Navigation to Other Projects -->
 <section class="px-6 py-16">
