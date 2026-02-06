@@ -156,40 +156,45 @@ export const skills: Skill[] = [
 // Timeline Data for About Page
 export const timeline: TimelineEvent[] = [
 	{
-		year: '2018',
+		year: '2021',
 		title: 'First Steps in the Field',
 		description:
 			'Started working as a hostess and promoter, learning the fundamentals of customer interaction, sales psychology, and thinking on my feet.'
 	},
 	{
-		year: '2019',
-		title: 'University Begins',
-		description:
-			'Enrolled in Marketing and Communication studies, combining academic theory with real-world experience from field work.'
-	},
-	{
-		year: '2020',
-		title: 'Heritage Marketing',
+		year: '2023',
+		title: 'Heritage Marketing at "Il Bronzetto"',
 		description:
 			'Joined Il Bronzetto to help bring traditional Italian craftsmanship to international markets, discovering a passion for brand storytelling.'
 	},
 	{
-		year: '2021',
-		title: 'Startup World',
+		year: '2024',
+		title: 'Bachelor\'s Degree in Humanities for Comunication at University of Firenze',
+		description:
+			'Graduated from Humanities for Comunication, where I combined academic theory with real-world experience from field work.'
+	},
+	{
+		year: '2025',
+		title: 'Startup World at "Unipiazza"',
 		description:
 			'Digital marketing internship at Unipiazza introduced me to data-driven marketing, gamification, and the fast-paced startup environment.'
 	},
 	{
-		year: '2022',
+		year: '2025',
 		title: 'TEDx Experience',
 		description:
 			'Joined the TEDx Cortina team, gaining invaluable experience in event management, PR, and community building.'
 	},
 	{
-		year: '2023',
-		title: 'Co-founding Sapiens',
+		year: '2025',
+		title: 'Co-founding "Sapiens"',
 		description:
 			'Took the leap to co-found an EdTech platform, applying all accumulated knowledge to build something meaningful for Italian students.'
+	},
+	{
+		year: '2026',
+		title: "Graduation from Master's Degree",
+		description: "Expected graduation from Master's Degree in Communication Strategies at University of Padua."
 	}
 ];
 
