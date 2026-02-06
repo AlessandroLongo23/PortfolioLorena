@@ -14,7 +14,7 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<section class="px-6 py-20 md:py-28">
+<section class="px-6 py-8 md:py-16">
 	<div class="mx-auto max-w-3xl">
 		<div class="grid gap-12 md:grid-cols-5 md:items-start">
 			<!-- Photo Placeholder -->
@@ -22,11 +22,7 @@
 				<div
 					class="aspect-[4/5] overflow-hidden rounded-lg bg-zinc-100"
 				>
-					<div
-						class="flex h-full w-full items-center justify-center text-ink-subtle"
-					>
-						<span class="text-xs">Photo</span>
-					</div>
+				<img src="/images/about/lorena.png" alt="Lorena Trapanese" class="h-full w-full object-cover">
 				</div>
 			</div>
 

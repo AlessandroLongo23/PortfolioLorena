@@ -26,8 +26,9 @@
 >
 	<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
 		<!-- Logo -->
-		<a href="/" class="text-xl font-semibold tracking-tight text-midnight">
-			Lorena Trapanese
+		<a href="/" class="flex items-center gap-4 text-xl font-semibold tracking-tight text-midnight">
+			<img src="/images/logo.png" alt="Lorena Trapanese" class="size-8 object-contain rounded-md">
+			<span class="text-xl font-semibold tracking-tight text-midnight">Lorena Trapanese</span>
 		</a>
 
 		<!-- Desktop Navigation -->
