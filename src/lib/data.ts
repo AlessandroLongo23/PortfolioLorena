@@ -75,11 +75,11 @@ export const projects: Project[] = [
 		star: {
 			situation:
 				'TEDx Cortina needed to expand its reach beyond the local mountain community while maintaining the intimate, high-quality experience that defined the event. Budget constraints required creative solutions for marketing and logistics.',
-			task: 'Responsible for developing the communication strategy, managing press relations, coordinating volunteer teams, and ensuring seamless attendee experience from registration to post-event engagement.',
+			task: 'At TEDxCortina 2025, I lead the storytelling strategy for Sustainability. My mission? To strip away the \'heaviness\' of technical discourse and replace it with emotional connection. By transforming expert insights into punchy, relatable \'social pills,\' I bridge the gap between scientific complexity and everyday action. I don’t just write copy; I build the narrative bridge that makes global issues feel local and person.',
 			action:
 				'Created a multi-channel communication plan targeting both local and national audiences. Secured media partnerships with regional newspapers and podcasts. Developed a volunteer training program focusing on hospitality excellence. Implemented a digital ticketing system with personalized attendee journeys.',
 			result:
-				'Successfully hosted 1,200+ attendees with a 98% satisfaction rate. Generated 25+ press mentions in regional and national media. Built a volunteer team of 50+ dedicated members. Increased social media following by 300% during the campaign period.'
+				'Currently planning the upcoming event for August 2026.'
 		}
 	},
 	{
@@ -113,7 +113,7 @@ export const projects: Project[] = [
 		impactStatement: 'International Market Expansion',
 		tags: ['Luxury Marketing', 'Brand Heritage', 'Made in Italy', 'B2B'],
 		visualStyle: 'elegant',
-		brandColor: '#a16207', // Bronze/amber - luxury craftsmanship
+		brandColor: '#a16207',
 		logo: '/images/logos/il-bronzetto.png',
 		coverImage: '/images/projects/il-bronzetto-cover.png',
 		star: {
@@ -123,7 +123,7 @@ export const projects: Project[] = [
 			action:
 				'Conducted brand archaeology research, documenting the workshop\'s 50-year history. Developed storytelling content featuring artisan interviews and behind-the-scenes craftsmanship videos. Created bilingual marketing collateral for international exhibitions. Established relationships with interior design publications.',
 			result:
-				'Successfully positioned the brand for international expansion. Secured features in 3 prestigious design publications. Developed a catalog that led to partnerships with 5 international distributors. Increased quote requests by 60% following trade show participation.'
+				'Successfully positioned the brand for international expansion. Secured features in 3 prestigious design publications. Developed a catalog that led to partnerships with 5 international distributors.'
 		}
 	},
 	{
