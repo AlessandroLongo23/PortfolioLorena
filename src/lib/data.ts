@@ -7,7 +7,7 @@ export interface StarMethod {
 	result: string;
 }
 
-export interface Project {
+export interface Experience {
 	slug: string;
 	title: string;
 	role: string;
@@ -24,6 +24,27 @@ export interface Project {
 	coverImage?: string; // e.g., '/images/projects/sapiens-cover.png' - shown in large cards
 }
 
+export type MediaBlock =
+	| { kind: 'video'; src: string; poster?: string; caption?: string }
+	| { kind: 'image'; src: string; alt: string; caption?: string }
+	| { kind: 'gallery'; images: { src: string; alt: string }[]; caption?: string };
+
+export interface CaseProject {
+	slug: string;
+	title: string;
+	category: string;
+	year?: string;
+	tags: string[];
+	brandColor: string;
+	description: string;
+	// Preview shown on the landing page
+	preview:
+		| { kind: 'video'; src: string; poster?: string }
+		| { kind: 'image'; src: string; alt: string };
+	// Detail page — ordered list of mixed media
+	media: MediaBlock[];
+}
+
 export interface TimelineEvent {
 	year: string;
 	title: string;
@@ -35,8 +56,8 @@ export interface Skill {
 	category: 'analytics' | 'marketing' | 'communication' | 'technical';
 }
 
-// Projects Data
-export const projects: Project[] = [
+// Experience Data (professional case studies with STAR method)
+export const experiences: Experience[] = [
 	{
 		slug: 'sapiens',
 		title: 'Sapiens',
@@ -72,11 +93,10 @@ export const projects: Project[] = [
 		star: {
 			situation:
 				'TEDx Cortina needed to expand its reach beyond the local mountain community while maintaining the intimate, high-quality experience that defined the event. Budget constraints required creative solutions for marketing and logistics.',
-			task: 'At TEDxCortina 2025, I lead the storytelling strategy for Sustainability. My mission? To strip away the \'heaviness\' of technical discourse and replace it with emotional connection. By transforming expert insights into punchy, relatable \'social pills,\' I bridge the gap between scientific complexity and everyday action. I don’t just write copy; I build the narrative bridge that makes global issues feel local and person.',
+			task: "At TEDxCortina 2025, I lead the storytelling strategy for Sustainability. My mission? To strip away the 'heaviness' of technical discourse and replace it with emotional connection. By transforming expert insights into punchy, relatable 'social pills,' I bridge the gap between scientific complexity and everyday action. I don’t just write copy; I build the narrative bridge that makes global issues feel local and person.",
 			action:
 				'Created a multi-channel communication plan targeting both local and national audiences. Secured media partnerships with regional newspapers and podcasts. Developed a volunteer training program focusing on hospitality excellence. Implemented a digital ticketing system with personalized attendee journeys.',
-			result:
-				'Currently planning the upcoming event for August 2026.'
+			result: 'Currently planning the upcoming event for August 2026.'
 		}
 	},
 	{
@@ -116,7 +136,7 @@ export const projects: Project[] = [
 				'Il Bronzetto, a traditional Italian bronze artisan workshop, wanted to expand beyond the local market while preserving its artisanal identity. The challenge was translating centuries-old craftsmanship into a compelling modern brand story.',
 			task: 'Develop a brand narrative that honors tradition while appealing to contemporary luxury buyers. Create marketing materials for international trade shows and establish digital presence.',
 			action:
-				'Conducted brand archaeology research, documenting the workshop\'s 50-year history. Developed storytelling content featuring artisan interviews and behind-the-scenes craftsmanship videos. Created bilingual marketing collateral for international exhibitions. Established relationships with interior design publications.',
+				"Conducted brand archaeology research, documenting the workshop's 50-year history. Developed storytelling content featuring artisan interviews and behind-the-scenes craftsmanship videos. Created bilingual marketing collateral for international exhibitions. Established relationships with interior design publications.",
 			result:
 				'Successfully positioned the brand for international expansion. Secured features in 3 prestigious design publications. Developed a catalog that led to partnerships with 5 international distributors.'
 		}
@@ -131,6 +151,36 @@ export const projects: Project[] = [
 		visualStyle: 'field',
 		brandColor: '#71717a',
 		isSummaryCard: true
+	}
+];
+
+// Creative Projects Data (videos, images, galleries)
+export const caseProjects: CaseProject[] = [
+	{
+		slug: 'teaser-campaign',
+		title: 'Teaser Campaign',
+		category: 'Video Teaser',
+		year: '2025',
+		tags: ['Video', 'Storytelling', 'Social'],
+		brandColor: '#6366f1',
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+		preview: {
+			kind: 'video',
+			src: '/projects/teaser-short.mp4'
+		},
+		media: [
+			{
+				kind: 'video',
+				src: '/projects/teaser-short.mp4',
+				caption: 'Short teaser cut'
+			},
+			{
+				kind: 'video',
+				src: '/projects/teaser-long.mp4',
+				caption: 'Extended version'
+			}
+		]
 	}
 ];
 
@@ -169,7 +219,7 @@ export const timeline: TimelineEvent[] = [
 	},
 	{
 		year: '2024',
-		title: 'Bachelor\'s Degree in Humanities for Comunication at University of Firenze',
+		title: "Bachelor's Degree in Humanities for Comunication at University of Firenze",
 		description:
 			'Graduated from Humanities for Comunication, where I combined academic theory with real-world experience from field work.'
 	},
@@ -194,21 +244,27 @@ export const timeline: TimelineEvent[] = [
 	{
 		year: '2026',
 		title: "Graduation from Master's Degree",
-		description: "Expected graduation from Master's Degree in Communication Strategies at University of Padua."
+		description:
+			"Expected graduation from Master's Degree in Communication Strategies at University of Padua."
 	}
 ];
 
-// Helper function to get project by slug
-export function getProjectBySlug(slug: string): Project | undefined {
-	return projects.find((p) => p.slug === slug);
+// Helper function to get experience by slug
+export function getExperienceBySlug(slug: string): Experience | undefined {
+	return experiences.find((e) => e.slug === slug);
 }
 
-// Get projects for Bento grid (excluding field experience for separate treatment)
-export function getBentoProjects(): Project[] {
-	return projects.filter((p) => !p.isSummaryCard);
+// Get experiences for Bento grid (excluding field experience for separate treatment)
+export function getBentoExperiences(): Experience[] {
+	return experiences.filter((e) => !e.isSummaryCard);
 }
 
 // Get field experience card
-export function getFieldExperience(): Project | undefined {
-	return projects.find((p) => p.isSummaryCard);
+export function getFieldExperience(): Experience | undefined {
+	return experiences.find((e) => e.isSummaryCard);
+}
+
+// Helper function to get case project by slug
+export function getCaseProjectBySlug(slug: string): CaseProject | undefined {
+	return caseProjects.find((p) => p.slug === slug);
 }

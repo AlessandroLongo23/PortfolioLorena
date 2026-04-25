@@ -25,3 +25,9 @@ vite.config.ts.timestamp-*
 # Paraglide
 src/lib/paraglide
 project.inlang/cache/
+
+# Local agent / tooling config
+.claude/
+.agents/
+.mcp.json
+skills-lock.json

@@ -20,31 +20,26 @@
 <svelte:window onscroll={handleScroll} />
 
 <header
-	class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 {scrolled
-		? 'bg-white/80 backdrop-blur-lg shadow-sm'
+	class="fixed top-0 right-0 left-0 z-50 transition-all duration-300 {scrolled
+		? 'bg-white/80 shadow-sm backdrop-blur-lg'
 		: 'bg-transparent'}"
 >
 	<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
 		<!-- Logo -->
 		<a href="/" class="flex items-center gap-4 text-xl font-semibold tracking-tight text-midnight">
-			<img src="/images/logo.png" alt="Lorena Trapanese" class="size-8 object-contain rounded-md">
+			<img src="/images/logo.png" alt="Lorena Trapanese" class="size-8 rounded-md object-contain" />
 			<span class="text-xl font-semibold tracking-tight text-midnight">Lorena Trapanese</span>
 		</a>
 
 		<!-- Desktop Navigation -->
 		<div class="hidden items-center gap-8 md:flex">
-			<a
-				href="/#work"
-				class="text-sm text-ink-muted transition-colors hover:text-ink"
-			>
-				Work
+			<a href="/#experience" class="text-sm text-ink-muted transition-colors hover:text-ink">
+				Experience
 			</a>
-			<a
-				href="/about"
-				class="text-sm text-ink-muted transition-colors hover:text-ink"
-			>
-				About
+			<a href="/#projects" class="text-sm text-ink-muted transition-colors hover:text-ink">
+				Projects
 			</a>
+			<a href="/about" class="text-sm text-ink-muted transition-colors hover:text-ink"> About </a>
 			<a
 				href="/resume-eng.pdf"
 				target="_blank"
@@ -73,16 +68,21 @@
 
 	<!-- Mobile Menu -->
 	{#if mobileMenuOpen}
-		<div
-			class="border-t border-border bg-white/95 backdrop-blur-lg md:hidden"
-		>
+		<div class="border-t border-border bg-white/95 backdrop-blur-lg md:hidden">
 			<div class="flex flex-col gap-4 px-6 py-6">
 				<a
-					href="/#work"
+					href="/#experience"
 					class="text-base text-ink-muted transition-colors hover:text-ink"
 					onclick={closeMobileMenu}
 				>
-					Work
+					Experience
+				</a>
+				<a
+					href="/#projects"
+					class="text-base text-ink-muted transition-colors hover:text-ink"
+					onclick={closeMobileMenu}
+				>
+					Projects
 				</a>
 				<a
 					href="/about"
