@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { MediaBlock } from '$lib/data';
+	import { resolveMediaUrl } from '$lib/supabase/storage';
 
 	interface Props {
 		block: MediaBlock;
@@ -12,8 +13,8 @@
 	{#if block.kind === 'video'}
 		<div class="flex max-h-[75vh] items-center justify-center overflow-hidden rounded-lg bg-zinc-900">
 			<video
-				src={block.src}
-				poster={block.poster}
+				src={resolveMediaUrl(block.src)}
+				poster={block.poster ? resolveMediaUrl(block.poster) : undefined}
 				controls
 				preload="metadata"
 				class="max-h-[75vh] max-w-full"
@@ -24,7 +25,7 @@
 	{:else if block.kind === 'image'}
 		<div class="flex max-h-[75vh] items-center justify-center overflow-hidden rounded-lg bg-zinc-100">
 			<img
-				src={block.src}
+				src={resolveMediaUrl(block.src)}
 				alt={block.alt}
 				class="max-h-[75vh] max-w-full object-contain"
 				loading="lazy"
@@ -32,12 +33,12 @@
 		</div>
 	{:else if block.kind === 'gallery'}
 		<div class="grid gap-3 sm:grid-cols-2">
-			{#each block.images as image}
+			{#each block.images as image (image.src)}
 				<div
 					class="flex aspect-square items-center justify-center overflow-hidden rounded-lg bg-zinc-100"
 				>
 					<img
-						src={image.src}
+						src={resolveMediaUrl(image.src)}
 						alt={image.alt}
 						class="h-full w-full object-contain"
 						loading="lazy"

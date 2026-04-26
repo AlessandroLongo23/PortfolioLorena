@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ArrowUpRight } from 'phosphor-svelte';
 	import type { CaseProject } from '$lib/data';
+	import { resolveMediaUrl } from '$lib/supabase/storage';
 
 	interface Props {
 		project: CaseProject;
@@ -19,8 +20,8 @@
 		{#if project.preview.kind === 'video'}
 			<!-- svelte-ignore a11y_media_has_caption -->
 			<video
-				src={project.preview.src}
-				poster={project.preview.poster}
+				src={resolveMediaUrl(project.preview.src)}
+				poster={project.preview.poster ? resolveMediaUrl(project.preview.poster) : undefined}
 				autoplay
 				muted
 				loop
@@ -30,7 +31,7 @@
 			></video>
 		{:else}
 			<img
-				src={project.preview.src}
+				src={resolveMediaUrl(project.preview.src)}
 				alt={project.preview.alt}
 				class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 				loading="lazy"

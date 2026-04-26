@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ArrowUpRight } from 'phosphor-svelte';
 	import type { Experience } from '$lib/data';
+	import { resolveMediaUrl } from '$lib/supabase/storage';
 
 	interface Props {
 		project: Experience;
@@ -41,7 +42,7 @@
 				{#if project.logo}
 					<div class="mr-5 flex flex-shrink-0 items-start pt-1">
 						<img
-							src={project.logo}
+							src={resolveMediaUrl(project.logo)}
 							alt="{project.title} logo"
 							class="h-10 w-10 object-contain opacity-60 transition-opacity group-hover:opacity-100 {size ===
 							'large'
@@ -73,7 +74,7 @@
 			{#if showCoverImage}
 				<div class="relative my-5 aspect-[16/9] overflow-hidden rounded-md bg-zinc-100">
 					<img
-						src={project.coverImage}
+						src={resolveMediaUrl(project.coverImage)}
 						alt="{project.title} preview"
 						class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 						loading="lazy"
@@ -147,10 +148,6 @@
 	}
 
 	.project-card:hover .project-title {
-		color: var(--brand-color);
-	}
-
-	.project-card .project-impact {
 		color: var(--brand-color);
 	}
 

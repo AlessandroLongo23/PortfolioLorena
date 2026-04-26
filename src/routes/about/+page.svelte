@@ -2,7 +2,9 @@
 	import { ArrowRight } from 'phosphor-svelte';
 	import { fly, fade } from 'svelte/transition';
 	import Timeline from '$lib/components/Timeline.svelte';
-	import { timeline } from '$lib/data';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
@@ -147,7 +149,7 @@
 		</p>
 
 		<div in:fly={{ y: 20, duration: 500, delay: 200 }}>
-			<Timeline events={timeline} />
+			<Timeline events={data.timeline} />
 		</div>
 	</div>
 </section>

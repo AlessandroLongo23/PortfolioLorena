@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { ArrowLeft, ArrowRight, Desktop, DeviceMobile } from 'phosphor-svelte';
+	import { ArrowLeft, ArrowRight } from 'phosphor-svelte';
 	import { fly, fade } from 'svelte/transition';
+	import { resolveMediaUrl } from '$lib/supabase/storage';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 
-	// Derived values for reactivity
 	let project = $derived(data.experience);
 	let hasCoverImage = $derived(!!project.coverImage);
 </script>
@@ -33,7 +33,7 @@
 	<!-- Background: Cover image or gradient -->
 	{#if hasCoverImage}
 		<div class="absolute inset-0">
-			<img src={project.coverImage} alt="" class="h-full w-full object-cover" aria-hidden="true" />
+			<img src={resolveMediaUrl(project.coverImage)} alt="" class="h-full w-full object-cover" aria-hidden="true" />
 			<!-- Dark overlay for text readability -->
 			<div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
 		</div>
@@ -49,7 +49,7 @@
 		>
 			{#if project.logo}
 				<img
-					src={project.logo}
+					src={resolveMediaUrl(project.logo)}
 					alt="{project.title} logo"
 					class="h-14 w-14 object-contain md:h-16 md:w-16"
 				/>

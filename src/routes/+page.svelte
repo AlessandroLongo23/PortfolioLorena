@@ -3,10 +3,12 @@
 	import { fly, fade } from 'svelte/transition';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import ProjectPreviewCard from '$lib/components/ProjectPreviewCard.svelte';
-	import { experiences, caseProjects, skills, getFieldExperience } from '$lib/data';
+	import type { PageData } from './$types';
 
-	const bentoExperiences = experiences.filter((e) => !e.isSummaryCard);
-	const fieldExperience = getFieldExperience();
+	let { data }: { data: PageData } = $props();
+
+	const bentoExperiences = $derived(data.experiences.filter((e) => !e.isSummaryCard));
+	const fieldExperience = $derived(data.experiences.find((e) => e.isSummaryCard));
 
 	// Category colors for skills - refined, monochromatic
 	const categoryColors: Record<string, string> = {
@@ -87,16 +89,16 @@
 			in:fade={{ duration: 400, delay: 100 }}
 		>
 			<!-- TEDx Cortina -->
-			<ProjectCard project={bentoExperiences[1]} size="large" />
+			{#if bentoExperiences[1]}<ProjectCard project={bentoExperiences[1]} size="large" />{/if}
 
 			<!-- Unipiazza -->
-			<ProjectCard project={bentoExperiences[2]} size="medium" />
+			{#if bentoExperiences[2]}<ProjectCard project={bentoExperiences[2]} size="medium" />{/if}
 
 			<!-- Il Bronzetto -->
-			<ProjectCard project={bentoExperiences[3]} size="medium" />
+			{#if bentoExperiences[3]}<ProjectCard project={bentoExperiences[3]} size="medium" />{/if}
 
 			<!-- Sapiens -->
-			<ProjectCard project={bentoExperiences[0]} size="wide" />
+			{#if bentoExperiences[0]}<ProjectCard project={bentoExperiences[0]} size="wide" />{/if}
 
 			<!-- Field Experience -->
 			{#if fieldExperience}
@@ -120,7 +122,7 @@
 		</div>
 
 		<div class="grid gap-4 md:grid-cols-2 md:gap-5" in:fade={{ duration: 400, delay: 100 }}>
-			{#each caseProjects as project}
+			{#each data.caseProjects as project (project.slug)}
 				<ProjectPreviewCard {project} />
 			{/each}
 		</div>
@@ -140,7 +142,7 @@
 
 		<!-- Skills Pills -->
 		<div class="flex flex-wrap justify-center gap-2" in:fade={{ duration: 400, delay: 100 }}>
-			{#each skills as skill}
+			{#each data.skills as skill (skill.name)}
 				<span class="rounded-full px-4 py-2 text-sm font-medium {categoryColors[skill.category]}">
 					{skill.name}
 				</span>
