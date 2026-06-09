@@ -62,6 +62,11 @@
 		};
 	}}
 >
+	<!-- The visible slug field is `disabled` when auto-generated, so it isn't submitted.
+	     This hidden input carries the slug in that case (exactly one `slug` entry either way). -->
+	{#if !customSlug}
+		<input type="hidden" name="slug" value={slug} />
+	{/if}
 	<input type="hidden" name="tags" value={JSON.stringify(tags)} />
 	<input type="hidden" name="preview" value={preview ? JSON.stringify(preview) : ''} />
 	<input type="hidden" name="media" value={JSON.stringify(media)} />

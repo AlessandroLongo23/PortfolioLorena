@@ -6,7 +6,10 @@
 	import ColorPicker from './ColorPicker.svelte';
 	import FileDropzone from './FileDropzone.svelte';
 	import StarMethodEditor from './StarMethodEditor.svelte';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import ExperienceDetail from '$lib/components/ExperienceDetail.svelte';
 	import { toSlug } from '$lib/utils/slug';
+	import type { Experience } from '$lib/data';
 
 	type ExperienceData = {
 		id?: string;
@@ -61,6 +64,37 @@
 	});
 
 	const folderBase = $derived(`experiences/${slug || 'new'}`);
+
+	// --- Live preview -------------------------------------------------------
+	let previewMode = $state<'card' | 'detail'>('card');
+	let previewEl = $state<HTMLElement | null>(null);
+
+	// Build an Experience-shaped object from the live form state, with gentle
+	// placeholders so the preview never looks broken before fields are filled.
+	const previewExperience = $derived<Experience>({
+		slug: slug || 'preview',
+		title: title.trim() || 'Titolo esperienza',
+		role: role.trim() || 'Ruolo',
+		duration: duration.trim() || 'Durata',
+		focus: focus.trim() || 'Una breve descrizione del focus di questa esperienza.',
+		tags: tags.length ? tags : ['Tag'],
+		visualStyle: visualStyle as Experience['visualStyle'],
+		brandColor: brandColor || '#6366f1',
+		logo: logoPath ?? undefined,
+		coverImage: coverPath ?? undefined,
+		isSummaryCard,
+		star: star ?? undefined
+	});
+
+	// Intercept clicks (capture phase) so following the card link never
+	// navigates away from the editor. Hover effects still work.
+	$effect(() => {
+		const el = previewEl;
+		if (!el) return;
+		const block = (e: MouseEvent) => e.preventDefault();
+		el.addEventListener('click', block, true);
+		return () => el.removeEventListener('click', block, true);
+	});
 </script>
 
 <form
@@ -75,6 +109,11 @@
 		};
 	}}
 >
+	<!-- The visible slug field is `disabled` when auto-generated, so it isn't submitted.
+	     This hidden input carries the slug in that case (exactly one `slug` entry either way). -->
+	{#if !customSlug}
+		<input type="hidden" name="slug" value={slug} />
+	{/if}
 	<input type="hidden" name="tags" value={JSON.stringify(tags)} />
 	<input type="hidden" name="star" value={star ? JSON.stringify(star) : ''} />
 	<input type="hidden" name="logo_path" value={logoPath ?? ''} />
@@ -199,6 +238,57 @@
 			{errors._global.join(' ')}
 		</p>
 	{/if}
+
+	<!-- Live preview -->
+	<div class="space-y-4 border-t border-zinc-200 pt-6">
+		<div class="flex flex-wrap items-end justify-between gap-3">
+			<div>
+				<h2 class="text-sm font-semibold text-zinc-700">Anteprima</h2>
+				<p class="text-xs text-zinc-500">
+					Come apparirà sul sito. Si aggiorna mentre compili il modulo.
+				</p>
+			</div>
+			<div class="inline-flex rounded-md border border-zinc-200 bg-zinc-50 p-0.5 text-xs">
+				<button
+					type="button"
+					onclick={() => (previewMode = 'card')}
+					class="rounded px-3 py-1 transition-colors {previewMode === 'card'
+						? 'bg-white font-medium text-zinc-900 shadow-sm'
+						: 'text-zinc-500 hover:text-zinc-700'}"
+				>
+					Card
+				</button>
+				<button
+					type="button"
+					onclick={() => (previewMode = 'detail')}
+					class="rounded px-3 py-1 transition-colors {previewMode === 'detail'
+						? 'bg-white font-medium text-zinc-900 shadow-sm'
+						: 'text-zinc-500 hover:text-zinc-700'}"
+				>
+					Dettaglio
+				</button>
+			</div>
+		</div>
+
+		<!-- Display-only: a capture-phase listener (see $effect) blocks navigation. -->
+		<div bind:this={previewEl} class="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 p-4 sm:p-6">
+			{#if previewMode === 'card'}
+				<div class="mx-auto w-full max-w-md">
+					<ProjectCard project={previewExperience} size="large" />
+				</div>
+				<p class="mt-3 text-center text-xs text-zinc-400">
+					Come appare nella griglia “Esperienze” della home (passa il mouse per il colore brand).
+				</p>
+			{:else}
+				<div class="max-h-[70vh] overflow-y-auto rounded-lg border border-zinc-200 bg-white">
+					<ExperienceDetail experience={previewExperience} animate={false} />
+				</div>
+				<p class="mt-3 text-center text-xs text-zinc-400">
+					L’intera pagina di dettaglio (scorri per vederla tutta).
+				</p>
+			{/if}
+		</div>
+	</div>
 
 	<div class="flex justify-end gap-3 border-t border-zinc-200 pt-6">
 		<a
