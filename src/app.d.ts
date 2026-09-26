@@ -1,18 +1,11 @@
-import type { SupabaseClient, User } from '@supabase/supabase-js';
+// See https://svelte.dev/docs/kit/types#app.d.ts
+import type { Locale } from '$lib/content';
 
 declare global {
 	namespace App {
-		interface Locals {
-			supabase: SupabaseClient;
-			safeGetUser: () => Promise<{ user: User | null }>;
-			user: User | null;
-		}
 		interface PageData {
-			user: User | null;
+			locale: Locale;
 		}
-		// interface Error {}
-		// interface PageState {}
-		// interface Platform {}
 	}
 }
 

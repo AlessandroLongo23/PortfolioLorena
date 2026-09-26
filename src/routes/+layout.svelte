@@ -1,32 +1,43 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import { locales, localizeHref } from '$lib/paraglide/runtime';
-	import './layout.css';
-	import Navbar from '$lib/components/Navbar.svelte';
+	import '@fontsource-variable/fraunces/opsz.css';
+	import '@fontsource-variable/public-sans';
+	import '@fontsource/ibm-plex-mono/400.css';
+	import '@fontsource/ibm-plex-mono/500.css';
+	import '../app.css';
+	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Lightbox from '$lib/components/Lightbox.svelte';
+	import { i18n } from '$lib/i18n.svelte';
 
 	let { children } = $props();
+
+	// The server sets <html lang>; keep it right after client-side language switches.
+	$effect(() => {
+		document.documentElement.lang = i18n.locale;
+	});
 </script>
 
-<svelte:head>
-	<meta name="description" content="Marketing Strategist turning data into growth. Portfolio showcasing experience with TEDx, EdTech startups, and Italian heritage brands." />
-</svelte:head>
+<a class="skip" href="#main">{i18n.c.ui.skip}</a>
+<Header />
+<main id="main">
+	{@render children()}
+</main>
+<Footer />
+<Lightbox />
 
-<div class="flex min-h-screen flex-col">
-	<Navbar />
-
-	<main class="flex-1 pt-20">
-		{@render children()}
-	</main>
-
-	<Footer />
-</div>
-
-<!-- Hidden locale links for i18n -->
-<div style="display:none">
-	{#each locales as locale}
-		<a href={localizeHref(page.url.pathname, { locale })}>
-			{locale}
-		</a>
-	{/each}
-</div>
+<style>
+	.skip {
+		position: absolute;
+		left: 12px;
+		top: -60px;
+		z-index: 200;
+		padding: 10px 14px;
+		background: var(--ink);
+		color: var(--paper);
+		font-family: var(--mono);
+		font-size: 12px;
+	}
+	.skip:focus {
+		top: 12px;
+	}
+</style>
