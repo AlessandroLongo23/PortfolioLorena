@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { i18n } from '$lib/i18n.svelte';
+	import { cvPath } from '$lib/content';
 	import ThemeToggle from './ThemeToggle.svelte';
 	import LangSwitch from './LangSwitch.svelte';
 
@@ -34,6 +35,9 @@
 							>
 						</li>
 					{/each}
+					<li class="nav-cv">
+						<a href={cvPath} target="_blank" rel="noopener" title={i18n.c.ui.cv.title}>{i18n.c.ui.cv.nav}</a>
+					</li>
 					<li class="nav-hello"><a class="cta" href={i18n.href('/#contact')}>{nav.hello}</a></li>
 				</ul>
 			</nav>

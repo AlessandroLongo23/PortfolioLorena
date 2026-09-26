@@ -412,18 +412,19 @@ const experience: Experience[] = [
 const toolkit = [
 	{ head: 'Writing & content', items: ['Editorial plans', 'Long and short copy', 'Newsletters', 'Tone of voice', 'Interviews', 'Short video'] },
 	{ head: 'Sales & marketing', items: ['B2B outreach', 'CRM', 'Campaigns', 'Events'] },
-	{ head: 'Software', items: ['HubSpot', 'Sales Navigator', 'Canva', 'Figma', 'CapCut', 'Notion', 'Trello', 'Google Workspace', 'PowerPoint', 'Google Analytics'] }
+	{ head: 'Software', items: ['PowerPoint', 'Excel', 'Google Workspace', 'HubSpot', 'Sales Navigator', 'Canva', 'Photoshop', 'Figma', 'CapCut', 'Notion', 'Trello', 'Google Analytics'] }
 ];
 
 const education = [
-	{ degree: 'Communication Strategies', school: 'University of Padova', when: 'MSc · 2024 – 2026' },
-	{ degree: 'Humanities for Communication', school: 'University of Florence', when: 'BA · 2021 – 2024' }
+	{ degree: 'Communication Strategies', school: 'University of Padova', when: 'MSc · graduated Sept 2026' },
+	{ degree: 'Humanities for Communication', school: 'University of Florence', when: 'BA · 2021 – 2024' },
+	{ degree: 'Languages, Cambridge curriculum', school: 'Language high school', when: 'Diploma · 2016 – 2021' }
 ];
 
 const languages = [
 	{ name: 'Italian', level: 'Native' },
 	{ name: 'English', level: 'Fluent (C1)' },
-	{ name: 'Spanish', level: 'Good (B2)' }
+	{ name: 'Spanish', level: 'Conversational (B2)' }
 ];
 
 const principles = [
@@ -444,6 +445,7 @@ const principles = [
 const ui = {
 	nav: { work: 'Work', experience: 'Experience', about: 'About', hello: 'Write me', home: 'home', main: 'Main' },
 	skip: 'Skip to content',
+	cv: { nav: 'CV', view: 'View CV', download: 'Download', title: 'Open my CV (PDF)' },
 	theme: { toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
 	lang: { label: 'Language', switchTo: 'Leggi in italiano' },
 	meta: {

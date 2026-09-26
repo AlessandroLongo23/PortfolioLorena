@@ -13,6 +13,9 @@ export const getContent = (locale: Locale) => byLocale[locale];
 
 export const siteUrl = 'https://portfolio-lorena-delta.vercel.app';
 
+/** Lorena's CV, English only. Replace the file in /static to update it. */
+export const cvPath = '/Lorena_Trapanese_CV.pdf';
+
 /** English lives at the root, Italian under /it. Slugs are shared. */
 export const localeFromPath = (pathname: string): Locale =>
 	/^\/it(\/|$)/.test(pathname) ? 'it' : 'en';

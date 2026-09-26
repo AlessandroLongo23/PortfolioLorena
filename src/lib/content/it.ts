@@ -412,18 +412,19 @@ const experience: Content['experience'] = [
 const toolkit: Content['toolkit'] = [
 	{ head: 'Scrittura e contenuti', items: ['Piani editoriali', 'Copy lungo e breve', 'Newsletter', 'Tone of voice', 'Interviste', 'Video brevi'] },
 	{ head: 'Vendite e marketing', items: ['Outreach B2B', 'CRM', 'Campagne', 'Eventi'] },
-	{ head: 'Software', items: ['HubSpot', 'Sales Navigator', 'Canva', 'Figma', 'CapCut', 'Notion', 'Trello', 'Google Workspace', 'PowerPoint', 'Google Analytics'] }
+	{ head: 'Software', items: ['PowerPoint', 'Excel', 'Google Workspace', 'HubSpot', 'Sales Navigator', 'Canva', 'Photoshop', 'Figma', 'CapCut', 'Notion', 'Trello', 'Google Analytics'] }
 ];
 
 const education: Content['education'] = [
-	{ degree: 'Strategie di comunicazione', school: 'Università di Padova', when: 'Magistrale · 2024 – 2026' },
-	{ degree: 'Scienze umanistiche per la comunicazione', school: 'Università di Firenze', when: 'Triennale · 2021 – 2024' }
+	{ degree: 'Strategie di comunicazione', school: 'Università di Padova', when: 'Magistrale · laureata set. 2026' },
+	{ degree: 'Scienze umanistiche per la comunicazione', school: 'Università di Firenze', when: 'Triennale · 2021 – 2024' },
+	{ degree: 'Lingue, Cambridge curriculum', school: 'Liceo linguistico', when: 'Diploma · 2016 – 2021' }
 ];
 
 const languages: Content['languages'] = [
 	{ name: 'Italiano', level: 'Madrelingua' },
 	{ name: 'Inglese', level: 'Fluente (C1)' },
-	{ name: 'Spagnolo', level: 'Buono (B2)' }
+	{ name: 'Spagnolo', level: 'Conversazione (B2)' }
 ];
 
 const principles: Content['principles'] = [
@@ -444,6 +445,7 @@ const principles: Content['principles'] = [
 const ui: Content['ui'] = {
 	nav: { work: 'Lavori', experience: 'Esperienza', about: 'Chi sono', hello: 'Scrivimi', home: 'home', main: 'Principale' },
 	skip: 'Vai al contenuto',
+	cv: { nav: 'CV', view: 'Apri CV', download: 'Scarica', title: 'Apri il mio CV (PDF, in inglese)' },
 	theme: { toDark: 'Passa al tema scuro', toLight: 'Passa al tema chiaro' },
 	lang: { label: 'Lingua', switchTo: 'Read in English' },
 	meta: {

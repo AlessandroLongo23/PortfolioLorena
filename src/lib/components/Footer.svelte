@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
+	import { cvPath } from '$lib/content';
 	import { reveal } from '$lib/actions/reveal';
 
 	let copied = $state(false);
@@ -31,6 +32,9 @@
 				<button class="btn btn--ghost" onclick={copy} aria-live="polite">
 					{copied ? f.copied : site.email}
 				</button>
+				<a class="btn btn--ghost" href={cvPath} target="_blank" rel="noopener" title={i18n.c.ui.cv.title}
+					>{i18n.c.ui.cv.view} <span class="arrow" aria-hidden="true">↗</span></a
+				>
 				<a class="btn btn--ghost" href={site.linkedin} target="_blank" rel="noopener"
 					>LinkedIn <span class="arrow" aria-hidden="true">↗</span></a
 				>

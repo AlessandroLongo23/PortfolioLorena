@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
+	import { cvPath } from '$lib/content';
 	import { reveal } from '$lib/actions/reveal';
 	import Seo from '$lib/components/Seo.svelte';
 
@@ -22,6 +23,12 @@
 		<div class="cta">
 			<a class="btn" href="mailto:{c.site.email}?subject={encodeURIComponent(c.ui.footer.subject)}"
 				>{c.ui.footer.write} <span class="arrow" aria-hidden="true">→</span></a
+			>
+			<a class="btn btn--ghost" href={cvPath} target="_blank" rel="noopener" title={c.ui.cv.title}
+				>{c.ui.cv.view} <span class="arrow" aria-hidden="true">↗</span></a
+			>
+			<a class="btn btn--ghost" href={cvPath} download="Lorena_Trapanese_CV.pdf"
+				>{c.ui.cv.download} <span aria-hidden="true">↓</span></a
 			>
 			<a class="btn btn--ghost" href={c.site.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
 		</div>
